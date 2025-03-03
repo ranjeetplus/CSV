@@ -1,10 +1,11 @@
+import streamit as st
 import pandas as pd
 import numpy as np
 from datetime import datetime
 
 # Load the CSV file
 df = pd.read_csv('messy_data.csv')
-
+st.write("CSV Data  ", df)
 # Strip column names
 df.columns = df.columns.str.strip()
 
@@ -43,3 +44,6 @@ df.reset_index(drop=True, inplace=True)
 df.to_csv('cleaned_data.csv', index=False)
 
 print(df)
+st.write("Clean Data ")
+
+st.write("Data  ", df)
