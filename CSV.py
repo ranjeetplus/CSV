@@ -24,10 +24,14 @@ df[['Age', 'Salary', 'Score']] = df[['Age', 'Salary', 'Score']].apply(pd.to_nume
 df['Joining Date'] = pd.to_datetime(df['Joining Date'], errors='coerce').dt.strftime('%Y-%m-%d')
 
 # Fill missing values
-df['Age'].fillna(df['Age'].median(), inplace=True, downcast='infer')
-df['Department'].fillna(df['Department'].mode()[0], inplace=True)
+df['Age'] = df['Age'].fillna(df['Age'].median())
+df['Department'] = df['Department'].fillna(df['Department'].mode()[0])
 df['Salary'] = df.groupby('Department')['Salary'].transform(lambda x: x.fillna(x.median()))
-df['Score'].fillna(df['Score'].mean(), inplace=True, downcast='infer')
+df['Score'] = df['Score'].fillna(df['Score'].mean())
+
+# Downcast numeric columns explicitly
+df['Age'] = pd.to_numeric(df['Age'], downcast='integer')
+df['Score'] = pd.to_numeric(df['Score'], downcast='float')
 
 # Drop rows where 'Age' or 'Salary' is still missing
 df.dropna(subset=['Age', 'Salary'], inplace=True)
