@@ -5,6 +5,8 @@ from datetime import datetime
 # Load the CSV file
 df = pd.read_csv('messy_data.csv')
 
+df.columns = df.columns.str.strip()
+
 # Replace 'Missing' and empty strings with NaN
 df.replace({'Missing': np.nan, '': np.nan}, inplace=True)
 
