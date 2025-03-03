@@ -1,0 +1,6 @@
+ Name ,Age,Salary ,Joining Date,Department,Score
+ Alice,25,50000,2020-01-15,HR,85
+Bob,Thirty,60000,15/02/2021,IT,
+Charlie,40,,,,78
+,,80000,03-03-2019,Finance,92
+Eve ,50,90000,"April 5, 2018",,Missing
